@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>열기 버튼</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #f4f4f9;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="actionBtn" onclick="handleClick()">열기</button>
+
+    <script>
+        let clickCount = 0;
+        let timer = null;
+
+        function handleClick() {
+            clickCount++;
+
+            // 기존에 동작 중인 타이머가 있다면 취소
+            if (timer) {
+                clearTimeout(timer);
+            }
+
+            // 5번 빠르게 클릭한 경우
+            if (clickCount >= 5) {
+                clickCount = 0;
+                window.location.href = "https://x.gd/xzTUL";
+                return;
+            }
+
+            // 1초(1000ms) 동안 추가 클릭이 없으면 클릭 횟수 리셋 및 오류 알림 표시
+            timer = setTimeout(() => {
+                if (clickCount < 5) {
+                    alert("오류");
+                }
+                clickCount = 0;
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
